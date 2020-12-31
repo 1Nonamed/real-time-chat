@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: "Roboto";
+}
+
+a {
+  text-decoration: none;
+  color: #000000
+}
+
+.d-flex {
+  display: flex;
+  /* align-items: center; */
+}
+
+/* Padding */
+
+/* Margin */
+.ml-20 {
+  margin-left: 20px;
+}
+.ml-10 {
+  margin-left: 10px;
+}

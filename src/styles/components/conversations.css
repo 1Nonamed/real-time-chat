@@ -1,0 +1,14 @@
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.space-between {
+  justify-content: space-between;
+}
+.prueba {
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+  min-height: 90vh;
+  max-height: calc(100vh - 60px);
+  overflow-y: scroll;
+  padding: "0px 16px";
+}
