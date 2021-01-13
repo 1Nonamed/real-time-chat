@@ -18,23 +18,21 @@ export const AppRouter = () => {
   const [isLogged, setisLogged] = useState(false);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(async (user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user?.uid) {
         dispatch(
           login(
             (user = {
               _id: "",
               firstName: user.displayName,
-              lastName: "",
               email: user.email,
-              username: "",
               photoUrl: user.photoURL,
               uid: user.uid,
             })
           )
         );
-        dispatch(updateChatAndUserInfo());
         setisLogged(true);
+        dispatch(updateChatAndUserInfo());
       } else {
         setisLogged(false);
       }

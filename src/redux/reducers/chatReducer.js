@@ -6,8 +6,8 @@ const initialState = {
   // loading: false,
   users: [],
   conversations: [],
+  activeConversation: {},
   messages: [],
-  activeConvesation: null,
   error: "",
 };
 
@@ -18,11 +18,31 @@ export const chatReducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-    case types.chatLoadActiveConversation: {
+    case types.chatSetConversations:
       return {
         ...state,
-        activeConvesation: action.activeConvesation
+        conversations: action.conversations,
       };
+    case types.chatSetActiveConversation: {
+      return {
+        ...state,
+        activeConversation: action.activeConversation,
+      };
+    }
+    case types.chatRemoveActiveConversation: {
+      return {
+        ...state,
+        activeConversation: {},
+      };
+    }
+    case types.chatSetMessages: {
+      return {
+        ...state,
+        messages: action.messages,
+      };
+    }
+    case types.chatCleanData: {
+      return {};
     }
     default:
       return state;

@@ -1,7 +1,7 @@
 import { firebase, googleAuthProvider } from "../../firebase/firebase-config";
 import { addUser, findActiveUser } from "../../helpers/users";
 import { types } from "../types/types";
-import { startLoadingUsers } from "./chatActions";
+import { startLoadingUsers, updateChatAndUserInfo } from "./chatActions";
 import { finishLoading, startLoading } from "./ui";
 
 // Sirve, preguntar login vacio al inicio y luego se llena
@@ -23,13 +23,12 @@ export const startLoginEmailPassword = (email, password) => {
       })
       .catch((e) => {
         //Pendiente alerta
-        console.log(e);
+        alert(e.message);
         dispatch(finishLoading());
       });
   };
 };
 
-// Register con email and pw funciona
 export const startRegisterWithEmailPasswordName = (
   email,
   password,
@@ -42,7 +41,8 @@ export const startRegisterWithEmailPasswordName = (
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(async ({ user }) => {
-        await user.updateProfile({
+        const userF = firebase.auth().currentUser;
+        userF.updateProfile({
           displayName: name,
           photoURL:
             "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png",
@@ -55,7 +55,6 @@ export const startRegisterWithEmailPasswordName = (
           photoUrl:
             "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png",
         };
-
         await addUser(newUser);
         await dispatch(startLoadingUsers());
 
@@ -63,7 +62,11 @@ export const startRegisterWithEmailPasswordName = (
         const activeUser = await findActiveUser(users, newUser.uid);
 
         dispatch(login(activeUser));
+        updateChatAndUserInfo();
         dispatch(finishLoading());
+      })
+      .catch((e) => {
+        alert(e.message);
       });
   };
 };
@@ -101,7 +104,7 @@ export const startGoogleLogin = () => {
           dispatch(login(activeUser));
           dispatch(finishLoading());
 
-        // If the user already exists, just Sign in
+          // If the user already exists, just Sign in
         } else {
           const activeUser = await findActiveUser(users, user.uid);
           dispatch(login(activeUser));
