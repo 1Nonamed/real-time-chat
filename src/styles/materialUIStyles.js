@@ -6,15 +6,9 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       backgroundColor: theme.palette.background.paper,
     },
-
     [theme.breakpoints.up("md")]: {
-      // background: 'rgb(88, 161, 255)',
-
       background:
         "linear-gradient(180deg, rgba(88,161,255,1) 10%, rgba(88,161,255,1) 10%, rgba(237,237,237,1) 10%,  rgba(237,237,237,1) 100%)",
-      // minHeight: "580px",
-      // // minHeight: "600px",
-      // maxHeight: "580px",
     },
   },
   container: {
@@ -24,17 +18,6 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: "75%",
     margin: "auto",
-    
-  },
-
-  paper: {
-    maxWidth: 400,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
-  },
-
-  test: {
-    backgroundColor: theme.palette.background.paper,
   },
 
   grow: {
