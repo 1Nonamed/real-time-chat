@@ -1,5 +1,4 @@
 import { Divider, IconButton, InputBase } from "@material-ui/core";
-import React from "react";
 import { useStyles } from "../../styles/materialUIStyles";
 import "../../styles/styles.css";
 import MoodIcon from "@material-ui/icons/Mood";
@@ -20,7 +19,7 @@ export const ChatMessageForm = () => {
   const [formValues, handleInputChange, reset] = useForm({
     userId: user._id,
     conversationId: activeConversation._id,
-    message: "",
+    message: ``,
     timestamp: Date.now(),
     received: false,
   });
@@ -37,12 +36,15 @@ export const ChatMessageForm = () => {
       <IconButton className="p-10">
         <MoodIcon />
       </IconButton>
+
       <InputBase
         type="text"
         name="message"
         value={formValues.message}
         autoFocus
         fullWidth
+        multiline
+        autoComplete="off"
         placeholder="Type a message"
         onChange={handleInputChange}
       />

@@ -11,7 +11,7 @@ export const useStyles = makeStyles((theme) => ({
       // background: 'rgb(88, 161, 255)',
 
       background:
-        "linear-gradient(180deg, rgba(88,161,255,1) 10%, rgba(88,161,255,1) 10%, rgba(237,237,237,1) 10%, rgba(237,237,237,1) 100%)",
+        "linear-gradient(180deg, rgba(88,161,255,1) 10%, rgba(88,161,255,1) 10%, rgba(237,237,237,1) 10%,  rgba(237,237,237,1) 100%)",
       // minHeight: "580px",
       // // minHeight: "600px",
       // maxHeight: "580px",
@@ -24,17 +24,19 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: "75%",
     margin: "auto",
+    
+  },
+
+  paper: {
+    maxWidth: 400,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
   },
 
   test: {
     backgroundColor: theme.palette.background.paper,
   },
 
-  fab: {
-    position: "absolute",
-    bottom: theme.spacing(5),
-    right: theme.spacing(4),
-  },
   grow: {
     flexGrow: 1,
   },
@@ -51,7 +53,7 @@ export const useStyles = makeStyles((theme) => ({
 
   messagesContainer: {
     overflowY: "scroll",
-    overflowX: "hidden",
+    // overflowX: "hidden",
     // backgroundImage: 'url("/src/img/whatsAppBackground.png")',
 
     [theme.breakpoints.down("sm")]: {

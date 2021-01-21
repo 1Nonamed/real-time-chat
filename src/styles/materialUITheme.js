@@ -1,27 +1,64 @@
-import { createMuiTheme, ThemeProvider } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
+import { createMuiTheme } from "@material-ui/core";
+import { blue } from "@material-ui/core/colors";
 
-const theme = createMuiTheme({
+export const theme = createMuiTheme({
   palette: {
     // type: "dark",
     primary: {
-      main: "#0b7e7c",
+      main: blue[800],
     },
-    secondary: green,
+    secondary: {
+      main: blue[600],
+    },
   },
 });
 
-const Theme = (props) => {
-  const { children } = props;
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+theme.props = {
+  MuiButton: {
+    disableElevation: true,
+    fullWidth: true,
+  },
+  MuiTextField: {
+    autoComplete: "off",
+    fullWidth: true,
+    margin: "dense",
+    required: true,
+    variant: "outlined",
+  },
+  MuiTypography: {
+    variant: "inherit",
+  },
 };
 
-export const withTheme = (Component) => {
-  return (props) => {
-    return (
-      <Theme>
-        <Component {...props} />
-      </Theme>
-    );
-  };
+theme.overrides = {
+  MuiButton: {
+    root: {
+      textTransform: "none",
+    },
+    containedPrimary: {
+      "&:hover": {
+        backgroundColor: "#42a5f5",
+        color: "#fffff",
+      },
+    },
+  },
+  MuiFab: {
+    secondary: {
+      position: "absolute",
+      bottom: theme.spacing(5),
+      right: theme.spacing(4),
+    },
+  },
+  MuiTypography: {
+    root: {
+      flexGrow: 1,
+      // textAlign: "center",
+    },
+    h6: {
+      textTransform: "capitalize",
+    },
+    body1: {
+      textAlign: "right",
+    },
+  },
 };

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Grid, Hidden } from "@material-ui/core";
+import { Grid, Hidden, Paper } from "@material-ui/core";
 
 import { startLoadingMessages } from "../../redux/actions/chatActions";
 import { ChatMessages } from "./ChatMessages";
@@ -12,7 +12,6 @@ import "../../styles/styles.css";
 import "../../styles/components/conversations.css";
 import { ChatAppBar } from "../ChatAppBar";
 import { Sidebar } from "../Sidebar";
-
 export const ChatConversation = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -40,18 +39,17 @@ export const ChatConversation = () => {
       </Hidden>
       <Hidden smDown>
         <div className={classes.container}>
-          <Grid
-            container
-            style={{
-              height: "95%",
-              border: "1px solid green",
-            }}
-            className={classes.test}
-          >
-            <Grid item md={3}>
+          <Grid container style={{ height: "95%" }}>
+            <Grid item md={3} component={Paper} square>
               <Sidebar user={user} />
             </Grid>
-            <Grid item md={9} style={{ position: "relative", height: "100%" }}>
+            <Grid
+              item
+              md={9}
+              style={{ height: "100%" }}
+              component={Paper}
+              square
+            >
               <ChatAppBar type="appBarContactUser" userContact={userContact} />
               <Grid container className={classes.messagesContainer}>
                 <ChatMessages

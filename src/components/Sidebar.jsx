@@ -4,9 +4,9 @@ import { ChatAppBar } from "./ChatAppBar";
 
 export const Sidebar = ({ user }) => {
   return (
-    <div className="sidebar">
+    <div id="scroll" className="sidebar">
       <ChatAppBar type="mdAppBar" user={user} />
-      <div style={{ overflowY: "auto", height: "100%" }}>
+      <div style={{ height: "100%" }}>
         <ChatConversations />
       </div>
     </div>

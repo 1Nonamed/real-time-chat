@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { Fab, Grid, Hidden } from "@material-ui/core";
+import { Fab, Grid, Hidden, Paper } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 
 import { ChatConversations } from "./ChatConversations";
@@ -27,7 +27,7 @@ export const ChatScreen = () => {
             <ChatAppBar type="smAppBar" user={user} />
             <ChatConversations />
             <Link to="/chat/users">
-              <Fab color="secondary" aria-label="edit" className={classes.fab}>
+              <Fab color="secondary" className={classes.fab}>
                 <EditIcon />
               </Fab>
             </Link>
@@ -40,14 +40,14 @@ export const ChatScreen = () => {
             container
             style={{
               height: "95%",
-              border: "1px solid green",
+              // border: "1px solid #d6d9db",
             }}
             className={classes.test}
           >
-            <Grid item md={3}>
+            <Grid item md={3} component={Paper} square>
               <Sidebar user={user} />
             </Grid>
-            <Grid item md={9}>
+            <Grid item md={9} component={Paper} square>
               {!activeConversation ? <ChatConversation /> : <NoChatScreen />}
             </Grid>
           </Grid>

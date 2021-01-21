@@ -1,5 +1,5 @@
 import { Button, TextField, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
@@ -58,24 +58,16 @@ export const LoginScreen = () => {
           <form onSubmit={handleLogin}>
             <TextField
               autoFocus
-              fullWidth
               name="email"
-              margin="normal"
               label="Email Address"
               onChange={handleInputChange}
-              required
               value={email}
-              variant="outlined"
             />
             <TextField
-              fullWidth
               label="Password"
-              margin="normal"
               name="password"
               onChange={handleInputChange}
-              required
               type="password"
-              variant="outlined"
               value={password}
             />
             <Button
@@ -83,7 +75,6 @@ export const LoginScreen = () => {
               type="submit"
               variant="contained"
               color="primary"
-              fullWidth
               disabled={loading}
             >
               Sign In
@@ -92,7 +83,6 @@ export const LoginScreen = () => {
               className={classes.submit}
               variant="contained"
               color="primary"
-              fullWidth
               disabled={loading}
               onClick={handleGoogleLogin}
             >

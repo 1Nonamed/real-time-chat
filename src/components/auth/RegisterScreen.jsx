@@ -55,10 +55,10 @@ export const RegisterScreen = () => {
 
   const isFormValid = () => {
     // lastname missing here
-    if (name.trim().length === 0) {
+    if (name.trim().length < 2) {
       dispatch(setError("Name is required"));
       return false;
-    } else if (lastname.trim().length === 0) {
+    } else if (lastname.trim().length < 2) {
       dispatch(setError("Name is required"));
       return false;
     } else if (!email.includes("@")) {
@@ -85,12 +85,12 @@ export const RegisterScreen = () => {
         md={4}
         square
         component={Paper}
-        className="d-flex align-center z-100"
+        className="d-flex align-center"
       >
         <div className={classes.paper}>
           <Avatar className={classes.avatar} />
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <form onSubmit={handleRegister}>
             {messageError && (
@@ -125,60 +125,40 @@ export const RegisterScreen = () => {
               />
             )}
             <TextField
-              name="name"
-              margin="normal"
-              label="Name"
-              value={name}
-              type="text"
-              required
               autoFocus
-              fullWidth
-              variant="outlined"
+              label="Name"
+              name="name"
               onChange={handleInputChange}
+              type="text"
+              value={name}
             />
             <TextField
-              fullWidth
-              margin="normal"
               name="lastname"
               onChange={handleInputChange}
               label="Lastname"
-              required
               type="text"
               value={lastname}
-              variant="outlined"
             />
             <TextField
-              fullWidth
-              margin="normal"
               name="email"
               onChange={handleInputChange}
               label="Email"
-              required
               type="email"
               value={email}
-              variant="outlined"
             />
             <TextField
-              fullWidth
-              margin="normal"
               name="password"
               onChange={handleInputChange}
               label="Password"
-              required
               type="password"
               value={password}
-              variant="outlined"
             />
             <TextField
-              fullWidth
-              margin="normal"
               name="password2"
               onChange={handleInputChange}
               label="Confirm Password"
-              required
               type="password"
               value={password2}
-              variant="outlined"
             />
             <Grid
               container
@@ -186,7 +166,7 @@ export const RegisterScreen = () => {
               justify="space-between"
               alignItems="center"
             >
-              <Grid item xs>
+              <Grid item xs={3}>
                 <Button type="submit" variant="contained" color="primary">
                   Register
                 </Button>
